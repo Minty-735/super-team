@@ -1,5 +1,6 @@
 package org.minty.superteams.listener;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -27,8 +28,6 @@ public class SuperClickStick implements Listener {
         ItemStack item = event.getPlayer().getActiveItem();
         String teamName = getCommandName(item);
         if (teamName != null) {
-
-//            Player player = event.getPlayer();
 
             if (event.getRightClicked() instanceof Player) {
                 Player target = (Player) event.getRightClicked();
@@ -78,6 +77,8 @@ public class SuperClickStick implements Listener {
     public String getCommandName(ItemStack item) {
         if (NbtTagManager.getNBTTag(item, "isEnable").equalsIgnoreCase("enable")) {
             String teamName = NbtTagManager.getNBTTag(item, "ColorTeam");
+
+
             return teamName;
         }
         return null;

@@ -8,12 +8,12 @@ teams:
     effects:
       - WATER_BREATHING
       - NIGHT_VISION
-    prefix: "yellow"
+    prefix: "green"
   green:
     effects:
       - WATER_BREATHING
       - NIGHT_VISION
-    prefix: "green"
+    prefix: "§rlgreen"
   white:
     effects:
       - WATER_BREATHING

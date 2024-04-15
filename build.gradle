@@ -20,6 +20,7 @@ repositories {
     }
     maven { url = 'https://repo.codemc.io/repository/maven-public/' }
     maven { url = 'https://jitpack.io' }
+    maven { url = 'https://github.com/tr7zw/Item-NBT-API' }
 }
 
 

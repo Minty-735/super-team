@@ -26,9 +26,11 @@ public class GiveStick implements CommandExecutor {
 
         ItemStack stick = new ItemStack(Material.STICK);
         ItemMeta meta = stick.getItemMeta();
-        meta.setDisplayName(ChatColor.RED + "SuperStick");
+        meta.setDisplayName(ChatColor.WHITE + "SuperStick");
+//        meta.set
         NbtTagManager.setNBTTag(stick,"isEnable","enable");
         NbtTagManager.setNBTTag(stick,"ColorTeam","red");
+        stick.setItemMeta(meta);
         player.getInventory().addItem(stick);
         return false;
     }
