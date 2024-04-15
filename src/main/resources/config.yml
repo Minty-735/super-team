@@ -1,0 +1,21 @@
+teams:
+  blue:
+    effects:
+      - WATER_BREATHING
+      - NIGHT_VISION
+    prefix: "blueTeam"
+  yellow:
+    effects:
+      - WATER_BREATHING
+      - NIGHT_VISION
+    prefix: "yellow"
+  green:
+    effects:
+      - WATER_BREATHING
+      - NIGHT_VISION
+    prefix: "green"
+  white:
+    effects:
+      - WATER_BREATHING
+      - NIGHT_VISION
+    prefix: "white"

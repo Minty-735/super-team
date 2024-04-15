@@ -1,0 +1,9 @@
+name: super-teams
+version: '${version}'
+main: org.minty.superteams.Super_teams
+api-version: '1.18'
+commands:
+  give_stick:
+    description: Дает игроку палку
+  switch:
+    description: Меняет команду игрока
