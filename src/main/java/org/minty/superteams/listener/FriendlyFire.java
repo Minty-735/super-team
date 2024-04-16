@@ -22,13 +22,7 @@ public class FriendlyFire implements Listener {
         if (damager instanceof Player && victim instanceof Player) {
             Player attacker = (Player) damager;
             Player defender = (Player) victim;
-
-            String attackerTeam = manager.getPlayerTeam(attacker);
-            String defenderTeam = manager.getPlayerTeam(defender);
-
-            if (attackerTeam != null && attackerTeam.equals(defenderTeam)) {
-                event.setCancelled(true);
-            }
+            event.setCancelled(manager.isTwoPlayerInOneTeam(attacker, defender));
         }
     }
 }

@@ -14,16 +14,9 @@ public class NameCompliter implements TabCompleter {
     public @Nullable List<String> onTabComplete(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String[] args) {
 
         if (args.length > 1) {
-            return Bukkit.getOnlinePlayers()
-                    .stream()
-                    .map(player -> player.getName())
-                    .filter(name -> name.startsWith(args[1]))
-                    .toList();
-        } else {
-            List.of("blue", "green", "white", "yellow")
-                    .stream()
-                    .filter(name -> name.startsWith(args[0]))
-                    .toList();
+            return Bukkit.getOnlinePlayers().stream().map(p -> p.getName()).toList();
+        } else if (args.length <= 1) {
+            return List.of("blue", "green", "white", "yellow");
         }
         return null;
     }

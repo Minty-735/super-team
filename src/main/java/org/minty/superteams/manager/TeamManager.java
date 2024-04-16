@@ -1,5 +1,6 @@
 package org.minty.superteams.manager;
 
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.minty.superteams.util.PlayerUtils;
 
@@ -13,7 +14,7 @@ public class TeamManager {
 
     public void addToTeam(Player player, String teamName) {
         playerTeam.put(player.getName(), teamName);
-        PlayerUtils.addTeamEffect(player,teamName);
+        PlayerUtils.addTeamEffect(player, teamName);
 
     }
 
@@ -25,6 +26,23 @@ public class TeamManager {
 
     public String getPlayerTeam(Player player) {
         return playerTeam.get(player.getName());
+    }
+
+
+    public boolean isTwoPlayerInOneTeam(Player damager, Player victim) {
+
+        if (damager instanceof Player && victim instanceof Player) {
+            Player attacker = (Player) damager;
+            Player defender = (Player) victim;
+
+            String attackerTeam = this.getPlayerTeam(attacker);
+            String defenderTeam = this.getPlayerTeam(defender);
+
+            if (attackerTeam != null && attackerTeam.equals(defenderTeam)) {
+                return true;
+            }
+        }
+        return false;
     }
 
 }
