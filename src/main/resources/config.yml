@@ -4,18 +4,25 @@ teams:
       - WATER_BREATHING
       - NIGHT_VISION
     prefix: "blueTeam"
+    location: null
+
   yellow:
     effects:
       - WATER_BREATHING
       - NIGHT_VISION
     prefix: "green"
+    location: null
+
   green:
     effects:
       - WATER_BREATHING
       - NIGHT_VISION
     prefix: "§rlgreen"
+    location: null
+
   white:
     effects:
       - WATER_BREATHING
       - NIGHT_VISION
     prefix: "white"
+    location: null

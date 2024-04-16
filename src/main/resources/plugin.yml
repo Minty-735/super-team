@@ -5,7 +5,11 @@ api-version: '1.18'
 #depend:
 #  - [NBTAPI]
 commands:
-  give_stick:
-    description: Дает игроку палку
   switch:
     description: Меняет команду игрока
+  set_teleport_pos:
+    description: Установить точку для телепортации
+  teleport_to_team_point:
+    description: Телепортироваться к точке команды
+  getList:
+    description: Вывести список игроков команды

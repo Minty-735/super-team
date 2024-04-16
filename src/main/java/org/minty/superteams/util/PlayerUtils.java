@@ -1,6 +1,7 @@
 package org.minty.superteams.util;
 
 import org.bukkit.ChatColor;
+import org.bukkit.Location;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Entity;
@@ -8,6 +9,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.minty.superteams.METADATA;
+import org.minty.superteams.manager.TeamManager;
 
 import java.util.List;
 
@@ -36,7 +38,23 @@ public class PlayerUtils {
         ChatColor color = getTeamColor(team);
         player.setDisplayName(color + prefix + " " + player.getName() + ChatColor.RESET);
         player.setPlayerListName(color + prefix + " " + player.getName());
+    }
 
+    public static void setTeamTeleport(Location location, String team) {
+        teamsSection.getConfigurationSection(team).set("location", location);
+        METADATA.PLUGIN.saveConfig();
+
+    }
+
+    public static void TeleportToTeam(Player player, String team) {
+        Location location = teamsSection.getConfigurationSection(team).getLocation("location");
+
+        if (location != null) {
+            player.teleport(location);
+        } else {
+            player.sendMessage(ChatColor.RED + "U are not in team");
+
+        }
 
     }
 

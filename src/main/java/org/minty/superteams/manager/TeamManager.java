@@ -25,7 +25,14 @@ public class TeamManager {
     }
 
     public String getPlayerTeam(Player player) {
-        return playerTeam.get(player.getName());
+        if (playerTeam.containsKey(player)) {
+            return playerTeam.get(player.getName());
+        }
+        return null;
+    }
+
+    public Map<String, String> getAllTeams() {
+        return playerTeam;
     }
 
 
