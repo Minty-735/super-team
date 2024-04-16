@@ -11,7 +11,6 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.minty.superteams.manager.NbtTagManager;
 import org.minty.superteams.manager.TeamManager;
-import org.minty.superteams.util.PlayerUtils;
 import org.minty.superteams.util.Team;
 
 public class SuperClickStick implements Listener {
@@ -25,10 +24,10 @@ public class SuperClickStick implements Listener {
 
     @EventHandler
     public void addToTeam(PlayerInteractEntityEvent event) {
-        ItemStack item = event.getPlayer().getActiveItem();
+        ItemStack item = event.getPlayer().getInventory().getItemInMainHand();
+
         String teamName = getCommandName(item);
         if (teamName != null) {
-
             if (event.getRightClicked() instanceof Player) {
                 Player target = (Player) event.getRightClicked();
                 manager.addToTeam(target, teamName);
@@ -39,11 +38,11 @@ public class SuperClickStick implements Listener {
 
     @EventHandler
     public void changeTeam(PlayerInteractEvent event) {
-        ItemStack item = event.getItem();
+        ItemStack item = event.getPlayer().getInventory().getItemInMainHand();
         String teamName = getCommandName(item);
         Team currentTeam = Team.fromName(teamName);
         if (teamName != null) {
-            if (event.getAction().isRightClick()) {
+            if (event.getAction().isLeftClick()) {
                 NbtTagManager.setNBTTag(item, "ColorTeam", currentTeam.getNextTeamName());
                 ChatColor color;
                 switch (teamName) {
@@ -69,19 +68,21 @@ public class SuperClickStick implements Listener {
                 ItemMeta meta = item.getItemMeta();
                 meta.setDisplayName(color + "SuperStick");
                 item.setItemMeta(meta);
+                event.setCancelled(true);
             }
         }
     }
 
 
     public String getCommandName(ItemStack item) {
-        if (NbtTagManager.getNBTTag(item, "isEnable").equalsIgnoreCase("enable")) {
-            String teamName = NbtTagManager.getNBTTag(item, "ColorTeam");
+//        if (NbtTagManager.getNBTTag(item, "isEnable").equalsIgnoreCase("enable")) {
+        String teamName = NbtTagManager.getNBTTag(item, "ColorTeam");
+        for (Player p : Bukkit.getOnlinePlayers()) {
+            p.sendMessage("team-> " + teamName);
 
-
-            return teamName;
         }
-        return null;
+
+        return teamName;
     }
 
 }
