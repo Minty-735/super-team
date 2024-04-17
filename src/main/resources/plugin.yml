@@ -1,6 +1,6 @@
 name: super-teams
 version: '${version}'
-main: org.minty.superteams.Super_teams
+main: org.minty.superteams.SuperTeams
 api-version: '1.18'
 #depend:
 #  - [NBTAPI]

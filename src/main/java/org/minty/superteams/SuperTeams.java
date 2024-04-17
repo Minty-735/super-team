@@ -11,7 +11,7 @@ import org.minty.superteams.manager.SuperTeamsApi;
 import org.minty.superteams.manager.TeamManager;
 import org.minty.superteams.manager.impl.SuperTeamsApiImpl;
 
-public final class Super_teams extends JavaPlugin {
+public final class SuperTeams extends JavaPlugin {
     private SuperTeamsApi api;
 
     @Override

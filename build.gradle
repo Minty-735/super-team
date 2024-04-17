@@ -1,7 +1,18 @@
-plugins {
-    id 'java'
-}
+    plugins {
+        id 'java'
+        id 'maven-publish'
+    }
 
+    publishing {
+        publications {
+            maven(MavenPublication) {
+                from components.java
+                groupId = 'com.myminecraftplugins'
+                artifactId = 'superteams'
+                version = '1.0' // Замени на актуальную версию
+            }
+        }
+    }
 group = 'org.minty'
 version = '1.0-SNAPSHOT'
 
