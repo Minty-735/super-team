@@ -13,11 +13,21 @@ public class SuperTeamsApiImpl implements SuperTeamsApi {
 
     @Override
     public String getPlayerTeam(Player player) {
-        return manager.getPlayerTeam(player);
+//        String teamName = manager.getPlayerTeam(player);
+        String teamName = (manager.playerTeam.get(player.getName()));
+        return teamName;
+
     }
 
     @Override
     public void addPlayerToTeam(Player player, String teamName) {
-        manager.addToTeam(player,teamName);
+        manager.addToTeam(player, teamName);
+        System.out.println("player + teamName = " + player + " " + teamName);
+        System.out.println(manager.playerTeam);
+    }
+
+    @Override
+    public TeamManager getTeamManager() {
+        return manager;
     }
 }

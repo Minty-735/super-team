@@ -8,5 +8,5 @@ public interface SuperTeamsApi {
     // Метод для добавления игрока в команду
     void addPlayerToTeam(Player player, String teamName);
 
-
+    TeamManager getTeamManager();
 }
