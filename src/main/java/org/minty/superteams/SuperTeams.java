@@ -7,18 +7,19 @@ import org.minty.superteams.command.SwitchTeam;
 import org.minty.superteams.command.TeleportToTeamPoint;
 import org.minty.superteams.compliter.NameCompliter;
 import org.minty.superteams.listener.FriendlyFire;
+import org.minty.superteams.listener.Join;
 import org.minty.superteams.manager.SuperTeamsApi;
 import org.minty.superteams.manager.TeamManager;
 import org.minty.superteams.manager.impl.SuperTeamsApiImpl;
 
 public final class SuperTeams extends JavaPlugin {
     private SuperTeamsApi api;
-
+    TeamManager manager;
     @Override
     public void onEnable() {
         METADATA.PLUGIN = this;
         saveDefaultConfig();
-        TeamManager manager = new TeamManager();
+        manager = new TeamManager();
         api = new SuperTeamsApiImpl(manager);
 //        getCommand("give_stick").setExecutor(new GiveStick());
 
@@ -29,12 +30,15 @@ public final class SuperTeams extends JavaPlugin {
         getCommand("teleport_to_team_point").setExecutor(new TeleportToTeamPoint(manager));
 
         getServer().getPluginManager().registerEvents(new FriendlyFire(manager),this);
+        getServer().getPluginManager().registerEvents(new Join(manager),this);
 //        getServer().getPluginManager().registerEvents(new SuperClickStick(manager),this);
+
+
     }
 
     @Override
     public void onDisable() {
-        // Plugin shutdown logic
+        manager.saveAllToCfg();
     }
 
     public SuperTeamsApi getApi(){

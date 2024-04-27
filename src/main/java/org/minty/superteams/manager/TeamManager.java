@@ -1,7 +1,9 @@
 package org.minty.superteams.manager;
 
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
+import org.minty.superteams.METADATA;
 import org.minty.superteams.util.PlayerUtils;
 
 import java.util.HashMap;
@@ -52,4 +54,14 @@ public class TeamManager {
         return false;
     }
 
+
+    public void saveAllToCfg() {
+        FileConfiguration config = METADATA.PLUGIN.getConfig();
+        for (String playerName : playerTeam.keySet()) {
+            config.set(playerName, playerTeam.get(playerName));
+
+        }
+        METADATA.PLUGIN.saveConfig();
+
+    }
 }

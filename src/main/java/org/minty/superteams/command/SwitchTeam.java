@@ -21,9 +21,9 @@ public class SwitchTeam implements CommandExecutor {
 
     @Override
     public boolean onCommand(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String[] args) {
-        Player player;
         if (commandSender instanceof Player) {
-            player = (Player) commandSender;
+            Player player = (Player) commandSender;
+
         } else {
             return false;
         }
